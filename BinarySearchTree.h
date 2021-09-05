@@ -122,7 +122,7 @@ namespace containers::trees {
 
             std::unique_ptr<Node> left, right;
         };
-		
+        
         class BidirectionalImpl
         {
         protected:
@@ -215,7 +215,7 @@ namespace containers::trees {
             }
         };
 
-		class IteratorBase : protected BidirectionalImpl
+        class IteratorBase : protected BidirectionalImpl
         {
         public:
             using value_type = Node;
@@ -323,14 +323,14 @@ namespace containers::trees {
 
         private:
             friend class BinarySearchTree;
-			friend class ConstIteratorBase;
+            friend class ConstIteratorBase;
 
             constexpr explicit Iterator(const BinarySearchTree* tree_) noexcept : IteratorBase(tree_) {}
 
             constexpr Iterator(typename IteratorBase::pointer node, const BinarySearchTree* tree_) noexcept : IteratorBase(node, tree_) {}
         };
 
-		class ReverseIterator final : public IteratorBase
+        class ReverseIterator final : public IteratorBase
         {
         public:
             constexpr ReverseIterator(std::nullptr_t = nullptr) noexcept : IteratorBase{} {}
@@ -389,19 +389,19 @@ namespace containers::trees {
             constexpr ReverseIterator(typename IteratorBase::pointer node, const BinarySearchTree* tree_) noexcept : IteratorBase(node, tree_) {}
         };
 
-		class ConstIteratorBase : protected BidirectionalImpl
+        class ConstIteratorBase : protected BidirectionalImpl
         {
         public:
-			using value_type = Node;
-			using reference  = const value_type&;
-			using pointer    = const value_type*;
+            using value_type = Node;
+            using reference  = const value_type&;
+            using pointer    = const value_type*;
 
-			using iterator   = typename BinarySearchTree::Iterator;
+            using iterator   = typename BinarySearchTree::Iterator;
 
-			using iterator_category = std::bidirectional_iterator_tag;
-			using difference_type   = std::ptrdiff_t;
+            using iterator_category = std::bidirectional_iterator_tag;
+            using difference_type   = std::ptrdiff_t;
 
-			constexpr bool operator==(const ConstIteratorBase& other) const noexcept
+            constexpr bool operator==(const ConstIteratorBase& other) const noexcept
             {
                 return current_node == other.current_node;
             }
@@ -411,10 +411,10 @@ namespace containers::trees {
                 return current_node != other.current_node;
             }
 
-		protected:
-			constexpr ConstIteratorBase(std::nullptr_t = nullptr) noexcept : current_node{}, tree{} {}
+        protected:
+            constexpr ConstIteratorBase(std::nullptr_t = nullptr) noexcept : current_node{}, tree{} {}
 
-			constexpr ConstIteratorBase(const iterator& it) noexcept : current_node{it.current_node}, tree{it.tree} {}
+            constexpr ConstIteratorBase(const iterator& it) noexcept : current_node{it.current_node}, tree{it.tree} {}
 
             constexpr explicit ConstIteratorBase(const BinarySearchTree* tree_) noexcept : current_node{}, tree{tree_} {}
 
@@ -443,17 +443,17 @@ namespace containers::trees {
                 return *this;
             }
 
-			pointer current_node;
+            pointer current_node;
 
             const BinarySearchTree* tree;
         };
 
-		class ConstIterator final : public ConstIteratorBase
+        class ConstIterator final : public ConstIteratorBase
         {
         public:
             constexpr ConstIterator(std::nullptr_t = nullptr) noexcept : ConstIteratorBase{} {}
 
-			constexpr ConstIterator(const typename ConstIteratorBase::iterator& it) noexcept : ConstIteratorBase(it) {}
+            constexpr ConstIterator(const typename ConstIteratorBase::iterator& it) noexcept : ConstIteratorBase(it) {}
 
             ConstIterator& operator++()
             {
