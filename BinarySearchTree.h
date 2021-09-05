@@ -147,7 +147,7 @@ namespace containers::trees {
 
                 }
 
-				if((*current_node)->right) {
+                if((*current_node)->right) {
 
                     if((*current_node)->right->left) {
 
