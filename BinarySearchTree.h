@@ -126,7 +126,7 @@ namespace containers::trees {
 		class BidirectionalImpl
 		{
 		protected:
-		    template<typename NodePointer>
+			template<typename NodePointer>
 			static void next(NodePointer* current_node, const BinarySearchTree* tree)
             {
                 if(*current_node == tree->rightmost) {
