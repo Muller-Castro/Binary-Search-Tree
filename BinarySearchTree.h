@@ -122,9 +122,9 @@ namespace containers::trees {
 
             std::unique_ptr<Node> left, right;
         };
-
-        class BidirectionalImpl
-{
+		
+		class BidirectionalImpl
+		{
 		protected:
 		    template<typename NodePointer>
 			static void next(NodePointer* current_node, const BinarySearchTree* tree)
