@@ -131,7 +131,7 @@ namespace containers::trees {
             {
                 if(*current_node == tree->rightmost) {
 
-				    return;
+                    return;
 
                 }else if(*current_node == (tree->rightmost - 1)) {
 
@@ -139,13 +139,13 @@ namespace containers::trees {
 
                     return;
 
-				}else if(!(*current_node) && !tree->is_empty()) {
+                }else if(!(*current_node) && !tree->is_empty()) {
 
                     *current_node = tree->rightmost - 1;
 
                     return;
 
-				}
+                }
 
 				if((*current_node)->right) {
 
