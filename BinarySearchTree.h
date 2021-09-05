@@ -124,7 +124,7 @@ namespace containers::trees {
         };
 
         class BidirectionalImpl
-		{
+{
 		protected:
 		    template<typename NodePointer>
 			static void next(NodePointer* current_node, const BinarySearchTree* tree)
