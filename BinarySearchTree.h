@@ -123,97 +123,97 @@ namespace containers::trees {
             std::unique_ptr<Node> left, right;
         };
 		
-		class BidirectionalImpl
-		{
-		protected:
-			template<typename NodePointer>
-			static void next(NodePointer* current_node, const BinarySearchTree* tree)
-			{
-				if(*current_node == tree->rightmost) {
+        class BidirectionalImpl
+        {
+        protected:
+            template<typename NodePointer>
+            static void next(NodePointer* current_node, const BinarySearchTree* tree)
+            {
+                if(*current_node == tree->rightmost) {
 
-				return;
+				    return;
 
-				}else if(*current_node == (tree->rightmost - 1)) {
+                }else if(*current_node == (tree->rightmost - 1)) {
 
-				++(*current_node);
+                    ++(*current_node);
 
-				return;
+                    return;
 
 				}else if(!(*current_node) && !tree->is_empty()) {
 
-				*current_node = tree->rightmost - 1;
+                    *current_node = tree->rightmost - 1;
 
-				return;
+                    return;
 
 				}
 
 				if((*current_node)->right) {
 
-				if((*current_node)->right->left) {
+                    if((*current_node)->right->left) {
 
-				*current_node = (*current_node)->right->left.get();
+                        *current_node = (*current_node)->right->left.get();
 
-				while((*current_node)->left) *current_node = (*current_node)->left.get();
+                        while((*current_node)->left) *current_node = (*current_node)->left.get();
 
-				}else {
+                    }else {
 
-				*current_node = (*current_node)->right.get();
+                        *current_node = (*current_node)->right.get();
 
-				}
+                    }
 
-				}else if((*current_node)->parent) {
+                }else if((*current_node)->parent) {
 
-				while(*current_node == (*current_node)->parent->right.get()) *current_node = (*current_node)->parent;
+                    while(*current_node == (*current_node)->parent->right.get()) *current_node = (*current_node)->parent;
 
-				*current_node = (*current_node)->parent;
+                    *current_node = (*current_node)->parent;
 
-				}
-			}
+                }
+            }
 
-			template<typename NodePointer>
-			static void previous(NodePointer* current_node, const BinarySearchTree* tree)
-			{
-				if(*current_node == tree->leftmost) {
+            template<typename NodePointer>
+            static void previous(NodePointer* current_node, const BinarySearchTree* tree)
+            {
+                if(*current_node == tree->leftmost) {
 
-				return;
+                    return;
 
-				}else if(*current_node == (tree->leftmost + 1)) {
+                }else if(*current_node == (tree->leftmost + 1)) {
 
-				--(*current_node);
+                    --(*current_node);
 
-				return;
+                    return;
 
-				}else if(!(*current_node) && !tree->is_empty()) {
+                }else if(!(*current_node) && !tree->is_empty()) {
 
-				*current_node = tree->leftmost + 1;
+                    *current_node = tree->leftmost + 1;
 
-				return;
+                    return;
 
-				}
+                }
 
-				if((*current_node)->left) {
+                if((*current_node)->left) {
 
-				if((*current_node)->left->right) {
+                    if((*current_node)->left->right) {
 
-				*current_node = (*current_node)->left->right.get();
+                        *current_node = (*current_node)->left->right.get();
 
-				while((*current_node)->right) *current_node = (*current_node)->right.get();
+                        while((*current_node)->right) *current_node = (*current_node)->right.get();
 
-				}else {
+                    }else {
 
-				*current_node = (*current_node)->left.get();
+                        *current_node = (*current_node)->left.get();
 
-				}
+                    }
 
-				}else if((*current_node)->parent) {
+                }else if((*current_node)->parent) {
 
-				while(*current_node == (*current_node)->parent->left.get()) *current_node = (*current_node)->parent;
+                    while(*current_node == (*current_node)->parent->left.get()) *current_node = (*current_node)->parent;
 
-				*current_node = (*current_node)->parent;
+                    *current_node = (*current_node)->parent;
 
-				}
-			}
-		};
+                }
+            }
+        };
 
 		class IteratorBase : protected BidirectionalImpl
         {
