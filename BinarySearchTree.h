@@ -1245,7 +1245,6 @@ namespace containers::trees {
 
                 }else if(curr_root->key == key) {
 
-
                     new_node = curr_root;
 
                     break;
