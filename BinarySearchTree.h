@@ -122,7 +122,7 @@ namespace containers::trees {
 
             std::unique_ptr<Node> left, right;
         };
-        
+
         class BidirectionalImpl
         {
         protected:
@@ -656,7 +656,7 @@ namespace containers::trees {
 
         [[nodiscard]] std::optional<ValueType>& operator[](const KeyType& key)
         {
-            return walk_n_insert(key, std::make_optional<ValueType>())->value;
+            return walk_n_insert(key, std::optional<ValueType>{})->value;
         }
 
         [[nodiscard]] Iterator begin() noexcept { return root ? Iterator(leftmost + 1, this) : Iterator(this); }
@@ -701,12 +701,12 @@ namespace containers::trees {
 
         void add(const KeyType& key)
         {
-            walk_n_insert(key, std::make_optional<ValueType>());
+            walk_n_insert(key, std::optional<ValueType>{});
         }
 
         void add(KeyType&& key)
         {
-            walk_n_insert(std::move(key), std::make_optional<ValueType>());
+            walk_n_insert(std::move(key), std::optional<ValueType>{});
         }
 
         void add(const KeyValueType& kv)
