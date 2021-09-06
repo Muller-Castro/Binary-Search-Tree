@@ -631,6 +631,8 @@ namespace containers::trees {
         {
             if(&bst == this) return *this;
 
+            delete_tree();
+
             sz        = bst.sz;
             comp      = std::move(bst.comp);
             rightmost = bst.rightmost;
