@@ -1,7 +1,7 @@
 # Binary Search Tree
  A C++17 implementation of an [AVL-Tree](https://en.wikipedia.org/wiki/AVL_tree) that can be used either as a **Key** set or as a **Key-Value** map.
  
- It covers most of what [std::set](https://en.cppreference.com/w/cpp/container/set) and [std::map](https://en.cppreference.com/w/cpp/container/map) offer
+ It covers most of what the [std::set](https://en.cppreference.com/w/cpp/container/set) and [std::map](https://en.cppreference.com/w/cpp/container/map) interfaces offer
  
  As a **Key** set:
  ```c++
