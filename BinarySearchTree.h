@@ -1334,6 +1334,18 @@ namespace containers::trees {
         return BinarySearchTree<Key, Compare, Value>(std::forward<TArgs>(args)...);
     }
 
+    template<typename Key, typename Value = Key, typename Compare = std::less<Key>>
+    [[nodiscard]] auto make_bst(std::initializer_list<Key> keys)
+    {
+        return BinarySearchTree<Key, Compare, Value>(keys);
+    }
+
+    template<typename Key, typename Value = Key, typename Compare = std::less<Key>>
+    [[nodiscard]] auto make_bst(std::initializer_list<typename BinarySearchTree<Key, Compare, Value>::KeyValueType> kvs)
+    {
+        return BinarySearchTree<Key, Compare, Value>(kvs);
+    }
+
     template<typename Key, typename Value = Key, typename... TArgs>
     [[nodiscard]] auto make_asc_bst(TArgs&&... args)
     {
